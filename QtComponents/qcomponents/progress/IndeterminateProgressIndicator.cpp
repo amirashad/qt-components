@@ -5,7 +5,7 @@
  * Created on April 12, 2010, 11:53 AM
  */
 
-#include "IndeterminateProgressIndicator.h"
+#include "QIndeterminateProgressIndicator.h"
 
 IndeterminateProgressIndicator::IndeterminateProgressIndicator(QWidget *parent) : QProgressBar(parent) {
     //    widget.setupUi(this);

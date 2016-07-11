@@ -8,8 +8,9 @@
 #ifndef QCLICKABLELABEL_H
 #define	QCLICKABLELABEL_H
 
-#include <QtWidgets/QLabel>
-#include <QtGui/QMouseEvent>
+#include <QLabel>
+#include <QMouseEvent>
+
 #include "../qcomps_global.h"
 
 class QCOMPS_EXPORT QClickableLabel : public QLabel {

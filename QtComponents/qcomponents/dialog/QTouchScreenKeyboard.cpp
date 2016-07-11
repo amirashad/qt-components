@@ -1,18 +1,16 @@
 /* 
- * File:   touchscreenkeyboard.cpp
+ * File:   QQTouchScreenKeyboard.cpp
  * Author: Rashad Amirjanov
  * 
  * Created on May 7, 2009, 4:43 PM
  */
 
-#include <typeinfo>
+#include "QTouchScreenKeyboard.h"
+#include <QDesktopWidget>
 
-#include "touchdialog.h"
-#include <QtWidgets/QDesktopWidget>
+QTouchScreenKeyboard *QTouchScreenKeyboard::keyboard;
 
-TouchScreenKeyboard *TouchScreenKeyboard::keyboard;
-
-TouchScreenKeyboard::TouchScreenKeyboard(QWidget *parent) : QDialog(parent) {
+QTouchScreenKeyboard::QTouchScreenKeyboard(QWidget *parent) : QDialog(parent) {
     setModal(false);
     setAttribute(Qt::WA_ShowWithoutActivating, true);
     for (int i = 0; i < MAX_LETTER_KEYS; i++) {
@@ -31,10 +29,10 @@ TouchScreenKeyboard::TouchScreenKeyboard(QWidget *parent) : QDialog(parent) {
     setWindowTitle(trUtf8("On-Screen Keyboard"));//"Клавиатура"
 }
 
-TouchScreenKeyboard::~TouchScreenKeyboard() {
+QTouchScreenKeyboard::~QTouchScreenKeyboard() {
 }
 
-void TouchScreenKeyboard::initKeyboardLettersRu() {
+void QTouchScreenKeyboard::initKeyboardLettersRu() {
     chars.append("й");
     chars.append("ц");
     chars.append("у");
@@ -78,7 +76,7 @@ void TouchScreenKeyboard::initKeyboardLettersRu() {
     //    chars.append(",");
 }
 
-void TouchScreenKeyboard::initKeyboardLettersEng() {
+void QTouchScreenKeyboard::initKeyboardLettersEng() {
     chars.append("q");
     chars.append("w");
     chars.append("e");
@@ -121,7 +119,7 @@ void TouchScreenKeyboard::initKeyboardLettersEng() {
     //    chars.append("/");
 }
 
-void TouchScreenKeyboard::initKeyboardNumbers() {
+void QTouchScreenKeyboard::initKeyboardNumbers() {
     numbers.append("1");
     numbers.append("2");
     numbers.append("3");
@@ -145,7 +143,7 @@ void TouchScreenKeyboard::initKeyboardNumbers() {
         numbers.append("Ok");
 }
 
-void TouchScreenKeyboard::initKeyboardButtons() {
+void QTouchScreenKeyboard::initKeyboardButtons() {
     QSize size = QSize(40, 40);
     QFont font = QFont(this->font().family(), 13);
     QGridLayout *gridButtons = new QGridLayout();
@@ -225,7 +223,7 @@ void TouchScreenKeyboard::initKeyboardButtons() {
     setLayout(layoutAllKeys);
 }
 
-void TouchScreenKeyboard::keysClicked() {
+void QTouchScreenKeyboard::keysClicked() {
     if (sender() == 0) {
         return;
     }
@@ -265,7 +263,7 @@ void TouchScreenKeyboard::keysClicked() {
     }
 }
 
-void TouchScreenKeyboard::btnLanguageClicked() {
+void QTouchScreenKeyboard::btnLanguageClicked() {
     for (int i = 0; i < MAX_LETTER_KEYS; i++) {
         if (keyLetters[i] != NULL) {
             delete keyLetters[i];
@@ -292,7 +290,7 @@ void TouchScreenKeyboard::btnLanguageClicked() {
     }
 }
 
-void TouchScreenKeyboard::keyCapsLockClicked() {
+void QTouchScreenKeyboard::keyCapsLockClicked() {
     for (int i = 0; i < MAX_LETTER_KEYS; i++) {
         if (keyLetters[i] != NULL) {
             if (((QPushButton*) sender())->isChecked()) {
@@ -304,7 +302,7 @@ void TouchScreenKeyboard::keyCapsLockClicked() {
     }
 }
 
-void TouchScreenKeyboard::showEvent(QShowEvent*) {
+void QTouchScreenKeyboard::showEvent(QShowEvent*) {
     QDesktopWidget desktop;
     //    QMessageBox::information(this, "", QString("%1, %2").arg(this->geometry().width()).arg(this->geometry().height()));
     int x = (desktop.width() - this->geometry().width()) / 2;
@@ -312,16 +310,17 @@ void TouchScreenKeyboard::showEvent(QShowEvent*) {
     move(x, y);
 }
 
-void TouchScreenKeyboard::initKeyboard() {
-    keyboard = new TouchScreenKeyboard();
+void QTouchScreenKeyboard::initKeyboard() {
+    keyboard = new QTouchScreenKeyboard();
 }
 
-void TouchScreenKeyboard::showKeyboard(QWidget* parent) {
+void QTouchScreenKeyboard::showKeyboard(QWidget* parent) {
+    Q_UNUSED(parent)
 //    keyboard->setParent(parent, Qt::Dialog);
 //    keyboard->setModal(false);
 //    keyboard->show();
 }
 
-void TouchScreenKeyboard::hideKeyboard() {
+void QTouchScreenKeyboard::hideKeyboard() {
 //    keyboard->hide();
 }

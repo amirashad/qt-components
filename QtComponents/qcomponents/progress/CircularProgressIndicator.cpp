@@ -1,7 +1,7 @@
-#include "CircularProgressIndicator.h"
+#include "QCircularProgressIndicator.h"
 
-#include <QtGui/QPainter>
-#include <QtWidgets/QApplication>
+#include <QPainter>
+#include <QApplication>
 
 CircularProgressIndicator::CircularProgressIndicator(QWidget* parent)
 : QWidget(parent),

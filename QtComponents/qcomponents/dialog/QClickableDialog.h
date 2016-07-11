@@ -8,8 +8,9 @@
 #ifndef QCLICKABLEDIALOG_H
 #define	QCLICKABLEDIALOG_H
 
-#include <QtWidgets/QDialog>
-#include <QtGui/QMouseEvent>
+#include <QDialog>
+#include <QMouseEvent>
+
 #include "../qcomps_global.h"
 
 class QCOMPS_EXPORT QClickableDialog : public QDialog {

@@ -1,27 +1,27 @@
 /* 
- * File:   HttpRequester2.h
+ * File:   HttpRequester.h
  * Author: Rashad Amirjanov
  *
  * Created on October 20, 2010, 5:48 PM
  */
 
-#ifndef HTTPREQUESTER2_H
-#define	HTTPREQUESTER2_H
+#ifndef HTTPREQUESTER_H
+#define	HTTPREQUESTER_H
 
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkReply>
-#include <QtNetwork/QNetworkRequest>
-#include <QtNetwork/QAuthenticator>
-#include <QtNetwork/QSslConfiguration>
-#include <QtNetwork/QNetworkDiskCache>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QAuthenticator>
+#include <QSslConfiguration>
+#include <QNetworkDiskCache>
 
 #include "../qcomps_global.h"
 
-class QCOMPS_EXPORT HttpRequester2 : public QObject {
+class QCOMPS_EXPORT HttpRequester : public QObject {
     Q_OBJECT
 public:
-    HttpRequester2(QObject *parent = NULL);
-    virtual ~HttpRequester2();
+    HttpRequester(QObject *parent = NULL);
+    virtual ~HttpRequester();
 
     enum RequestMethod {
         GET, POST, PUT, DELETE_RESOURCE, OPTIONS
@@ -93,4 +93,4 @@ public:
     static void clearCacheStatic();
 };
 
-#endif	/* HTTPREQUESTER2_H */
+#endif	/* HTTPREQUESTER_H */

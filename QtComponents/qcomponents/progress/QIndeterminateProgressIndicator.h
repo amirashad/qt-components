@@ -8,7 +8,7 @@
 #ifndef _IndeterminateProgressIndicator_H
 #define	_IndeterminateProgressIndicator_H
 
-#include <QtWidgets/QProgressBar>
+#include <QProgressBar>
 #include "../qcomps_global.h"
 
 class QCOMPS_EXPORT IndeterminateProgressIndicator : public QProgressBar {

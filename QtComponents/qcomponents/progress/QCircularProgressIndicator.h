@@ -1,8 +1,8 @@
 #ifndef QPROGRESSINDICATOR_H
 #define QPROGRESSINDICATOR_H
 
-#include <QtWidgets/QWidget>
-#include <QtGui/QColor>
+#include <QWidget>
+#include <QColor>
 
 #include "../qcomps_global.h"
 

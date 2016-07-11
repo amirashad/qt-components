@@ -1,15 +1,15 @@
 /* 
- * File:   splashdialog.cpp
+ * File:   QSplashScreenDialog.cpp
  * Author: Rashad Amirjanov
  *
  * Created on April 29, 2009, 11:40 AM
  */
 
-#include "splashdialog.h"
+#include "QSplashScreenDialog.h"
 
-SplashScreenDialog *SplashScreenDialog::splashScreenDlg = NULL;
+QSplashScreenDialog *QSplashScreenDialog::splashScreenDlg = NULL;
 
-SplashScreenDialog::SplashScreenDialog() : QDialog(NULL) {
+QSplashScreenDialog::QSplashScreenDialog() : QDialog(NULL) {
     setWindowFlags(Qt::SplashScreen);
     QPalette palette1(QColor(188, 220, 240, 225));
     setPalette(palette1);
@@ -33,32 +33,32 @@ SplashScreenDialog::SplashScreenDialog() : QDialog(NULL) {
     vMainLayout->addWidget(lbImage);
 }
 
-SplashScreenDialog::~SplashScreenDialog() {
+QSplashScreenDialog::~QSplashScreenDialog() {
     delete vLayoutText;
     delete lbText;
     delete lbImage;
     delete vMainLayout;
 }
 
-void SplashScreenDialog::openSplash() {
+void QSplashScreenDialog::openSplash() {
     show();
 }
 
-void SplashScreenDialog::closeSplash() {
+void QSplashScreenDialog::closeSplash() {
     close();
 }
 
-void SplashScreenDialog::setPixmap(QPixmap px) {
+void QSplashScreenDialog::setPixmap(QPixmap px) {
     lbImage->setPixmap(px);
 }
 
-void SplashScreenDialog::openSplashDialog(QPixmap px) {
-    splashScreenDlg = new SplashScreenDialog();
+void QSplashScreenDialog::openSplashDialog(QPixmap px) {
+    splashScreenDlg = new QSplashScreenDialog();
     splashScreenDlg->setPixmap(px);
     splashScreenDlg->openSplash();
 }
 
-void SplashScreenDialog::closeSplashDialog() {
+void QSplashScreenDialog::closeSplashDialog() {
     splashScreenDlg->closeSplash();
     delete splashScreenDlg;
     splashScreenDlg = NULL;

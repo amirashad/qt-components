@@ -8,8 +8,8 @@
 #ifndef QNATURALSORT_H
 #define	QNATURALSORT_H
 
-#include <QtCore/QString>
-#include <QtCore/QStringList>
+#include <QString>
+#include <QStringList>
 
 class qNaturalSort {
 public:
