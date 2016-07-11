@@ -1,5 +1,12 @@
-#ifndef QPROGRESSINDICATOR_H
-#define QPROGRESSINDICATOR_H
+/*
+ * File:   QCircularProgressIndicator.h
+ * Author: Rashad Amirjanov
+ *
+ * Created on April 12, 2010, 11:53 AM
+ */
+
+#ifndef _QCIRCULARPROGRESSINDICATOR_H
+#define _QCIRCULARPROGRESSINDICATOR_H
 
 #include <QWidget>
 #include <QColor>
@@ -13,13 +20,13 @@
     Progress indicators are indeterminate and do nothing more than spin to show that the application is busy.
     \sa QProgressBar
  */
-class QCOMPS_EXPORT CircularProgressIndicator : public QWidget {
+class QCOMPS_EXPORT QCircularProgressIndicator : public QWidget {
     Q_OBJECT
     Q_PROPERTY(int delay READ animationDelay WRITE setAnimationDelay)
     Q_PROPERTY(bool displayedWhenStopped READ isDisplayedWhenStopped WRITE setDisplayedWhenStopped)
     Q_PROPERTY(QColor color READ color WRITE setColor)
 public:
-    CircularProgressIndicator(QWidget* parent = 0);
+    QCircularProgressIndicator(QWidget* parent = 0);
 
     /*! Returns the delay between animation steps.
         \return The number of milliseconds between animation steps. By default, the animation delay is set to 40 milliseconds.
@@ -89,4 +96,4 @@ private:
     QColor m_color;
 };
 
-#endif // QPROGRESSINDICATOR_H
+#endif // _QCIRCULARPROGRESSINDICATOR_H

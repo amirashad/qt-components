@@ -1,24 +1,24 @@
 /* 
- * File:   IndeterminateProgressIndicator.h
+ * File:   QIndeterminateProgressIndicator.h
  * Author: Rashad Amirjanov
  *
  * Created on April 12, 2010, 11:53 AM
  */
 
-#ifndef _IndeterminateProgressIndicator_H
-#define	_IndeterminateProgressIndicator_H
+#ifndef _QINDETERMINATEPROGRESSINDICATOR_H
+#define	_QINDETERMINATEPROGRESSINDICATOR_H
 
 #include <QProgressBar>
 #include "../qcomps_global.h"
 
-class QCOMPS_EXPORT IndeterminateProgressIndicator : public QProgressBar {
+class QCOMPS_EXPORT QIndeterminateProgressIndicator : public QProgressBar {
     //    Q_OBJECT
 public:
-    IndeterminateProgressIndicator(QWidget *parent = 0);
-    virtual ~IndeterminateProgressIndicator();
+    QIndeterminateProgressIndicator(QWidget *parent = 0);
+    virtual ~QIndeterminateProgressIndicator();
     //protected:
     //    void timerEvent(QTimerEvent *);
 private:
 };
 
-#endif	/* _IndeterminateProgressIndicator_H */
+#endif	/* _QINDETERMINATEPROGRESSINDICATOR_H */

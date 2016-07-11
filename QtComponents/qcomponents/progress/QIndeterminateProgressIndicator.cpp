@@ -1,5 +1,5 @@
 /*
- * File:   IndeterminateProgressIndicator.cpp
+ * File:   QIndeterminateProgressIndicator.cpp
  * Author: Rashad Amirjanov
  *
  * Created on April 12, 2010, 11:53 AM
@@ -7,7 +7,7 @@
 
 #include "QIndeterminateProgressIndicator.h"
 
-IndeterminateProgressIndicator::IndeterminateProgressIndicator(QWidget *parent) : QProgressBar(parent) {
+QIndeterminateProgressIndicator::QIndeterminateProgressIndicator(QWidget *parent) : QProgressBar(parent) {
     //    widget.setupUi(this);
     //    this->setWindowFlags(Qt::SplashScreen | Qt::WindowStaysOnTopHint);
 
@@ -27,7 +27,7 @@ IndeterminateProgressIndicator::IndeterminateProgressIndicator(QWidget *parent) 
     //    startTimer(100);
 }
 
-IndeterminateProgressIndicator::~IndeterminateProgressIndicator() {
+QIndeterminateProgressIndicator::~QIndeterminateProgressIndicator() {
 }
 
 //void ProgressDialog::timerEvent(QTimerEvent*) {

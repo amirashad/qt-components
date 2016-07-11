@@ -1,9 +1,17 @@
+/*
+ * File:   QCircularProgressIndicator.h
+ * Author: Rashad Amirjanov
+ *
+ * Created on April 12, 2010, 11:53 AM
+ */
+
+
 #include "QCircularProgressIndicator.h"
 
 #include <QPainter>
 #include <QApplication>
 
-CircularProgressIndicator::CircularProgressIndicator(QWidget* parent)
+QCircularProgressIndicator::QCircularProgressIndicator(QWidget* parent)
 : QWidget(parent),
 m_angle(0),
 m_timerId(-1),
@@ -14,28 +22,28 @@ m_color(Qt::black) {
     setFocusPolicy(Qt::NoFocus);
 }
 
-bool CircularProgressIndicator::isAnimated() const {
+bool QCircularProgressIndicator::isAnimated() const {
     return (m_timerId != -1);
 }
 
-void CircularProgressIndicator::setDisplayedWhenStopped(bool state) {
+void QCircularProgressIndicator::setDisplayedWhenStopped(bool state) {
     m_displayedWhenStopped = state;
 
     update();
 }
 
-bool CircularProgressIndicator::isDisplayedWhenStopped() const {
+bool QCircularProgressIndicator::isDisplayedWhenStopped() const {
     return m_displayedWhenStopped;
 }
 
-void CircularProgressIndicator::startAnimation() {
+void QCircularProgressIndicator::startAnimation() {
     m_angle = 0;
 
     if (m_timerId == -1)
         m_timerId = startTimer(m_delay);
 }
 
-void CircularProgressIndicator::stopAnimation() {
+void QCircularProgressIndicator::stopAnimation() {
     if (m_timerId != -1)
         killTimer(m_timerId);
 
@@ -44,7 +52,7 @@ void CircularProgressIndicator::stopAnimation() {
     update();
 }
 
-void CircularProgressIndicator::setAnimationDelay(int delay) {
+void QCircularProgressIndicator::setAnimationDelay(int delay) {
     if (m_timerId != -1)
         killTimer(m_timerId);
 
@@ -54,28 +62,28 @@ void CircularProgressIndicator::setAnimationDelay(int delay) {
         m_timerId = startTimer(m_delay);
 }
 
-void CircularProgressIndicator::setColor(const QColor & color) {
+void QCircularProgressIndicator::setColor(const QColor & color) {
     m_color = color;
 
     update();
 }
 
-QSize CircularProgressIndicator::sizeHint() const {
+QSize QCircularProgressIndicator::sizeHint() const {
     return QSize(20, 20);
 }
 
-int CircularProgressIndicator::heightForWidth(int w) const {
+int QCircularProgressIndicator::heightForWidth(int w) const {
     return w;
 }
 
-void CircularProgressIndicator::timerEvent(QTimerEvent * /*event*/) {
+void QCircularProgressIndicator::timerEvent(QTimerEvent * /*event*/) {
     m_angle = (m_angle + 30) % 360;
 
     update();
     QApplication::processEvents();
 }
 
-void CircularProgressIndicator::paintEvent(QPaintEvent * /*event*/) {
+void QCircularProgressIndicator::paintEvent(QPaintEvent * /*event*/) {
     if (!m_displayedWhenStopped && !isAnimated())
         return;
 
