@@ -12,4 +12,3 @@ TEMPLATE = subdirs
 # Directories
 SUBDIRS += \
         HttpDownloaderTest \
-    HttpDownloaderTest

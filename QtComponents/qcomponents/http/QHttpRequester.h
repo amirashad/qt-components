@@ -1,12 +1,12 @@
 /* 
- * File:   HttpRequester.h
+ * File:   QHttpRequester.h
  * Author: Rashad Amirjanov
  *
  * Created on October 20, 2010, 5:48 PM
  */
 
-#ifndef HTTPREQUESTER_H
-#define	HTTPREQUESTER_H
+#ifndef _QHTTPREQUESTER_H
+#define	_QHTTPREQUESTER_H
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -17,11 +17,11 @@
 
 #include "../qcomps_global.h"
 
-class QCOMPS_EXPORT HttpRequester : public QObject {
+class QCOMPS_EXPORT QHttpRequester : public QObject {
     Q_OBJECT
 public:
-    HttpRequester(QObject *parent = NULL);
-    virtual ~HttpRequester();
+    QHttpRequester(QObject *parent = NULL);
+    virtual ~QHttpRequester();
 
     enum RequestMethod {
         GET, POST, PUT, DELETE_RESOURCE, OPTIONS
@@ -93,4 +93,4 @@ public:
     static void clearCacheStatic();
 };
 
-#endif	/* HTTPREQUESTER_H */
+#endif	/* _QHTTPREQUESTER_H */

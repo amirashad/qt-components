@@ -1,5 +1,5 @@
 /* 
- * File:   HttpRequester2.cpp
+ * File:   QHttpRequester.cpp
  * Author: Rashad Amirjanov
  *
  * Created on October 20, 2010, 5:48 PM
@@ -17,7 +17,7 @@
     #include <QtWidgets>
 #endif
 
-HttpRequester::HttpRequester(QObject * parent) : QObject(parent) {
+QHttpRequester::QHttpRequester(QObject * parent) : QObject(parent) {
     //    m_requestFinished = false;
     m_authDialogEnabled = false;
     m_requestMethod = GET;
@@ -30,44 +30,44 @@ HttpRequester::HttpRequester(QObject * parent) : QObject(parent) {
             this, SLOT(slotAuthenticationRequired(QNetworkReply*, QAuthenticator*)));
 }
 
-HttpRequester::~HttpRequester() {
+QHttpRequester::~QHttpRequester() {
     if (m_reply != NULL) {
         m_reply->abort();
         m_reply->deleteLater();
     }
 }
-bool HttpRequester::isCacheEnabled() const
+bool QHttpRequester::isCacheEnabled() const
 {
     return m_cacheEnabled;
 }
 
-void HttpRequester::setCacheEnabled(bool cacheEnabled)
+void QHttpRequester::setCacheEnabled(bool cacheEnabled)
 {
     m_cacheEnabled = cacheEnabled;
 }
 
-void HttpRequester::clearCache(){
+void QHttpRequester::clearCache(){
     m_diskCache.clear();
 }
 
-void HttpRequester::setAuthDialogEnabled(bool enable) {
+void QHttpRequester::setAuthDialogEnabled(bool enable) {
     this->m_authDialogEnabled = enable;
 }
 
-void HttpRequester::setAuthentication(QString userName, QString password) {
+void QHttpRequester::setAuthentication(QString userName, QString password) {
     this->m_userName = userName;
     this->m_password = password;
 }
 
-QString HttpRequester::userName() {
+QString QHttpRequester::userName() {
     return this->m_userName;
 }
 
-QString HttpRequester::password() {
+QString QHttpRequester::password() {
     return this->m_password;
 }
 
-void HttpRequester::sendRequest(QString url) {
+void QHttpRequester::sendRequest(QString url) {
     //    m_requestFinished = false;
     //    m_errorString = "";
     m_response = "";
@@ -137,18 +137,18 @@ void HttpRequester::sendRequest(QString url) {
     }
 }
 
-void HttpRequester::slotAuthenticationRequired(QNetworkReply*, QAuthenticator *authenticator) {
+void QHttpRequester::slotAuthenticationRequired(QNetworkReply*, QAuthenticator *authenticator) {
     showAuthDialog();
 
     authenticator->setUser(m_userName);
     authenticator->setPassword(m_password);
 }
 
-QByteArray HttpRequester::response() {
+QByteArray QHttpRequester::response() {
     return m_response;
 }
 
-QString HttpRequester::errorString() {
+QString QHttpRequester::errorString() {
     if (m_reply != NULL && m_reply->error() > 0) {
         return m_reply->errorString();
     } else {
@@ -156,53 +156,53 @@ QString HttpRequester::errorString() {
     }
 }
 
-void HttpRequester::setRequestMethod(RequestMethod method) {
+void QHttpRequester::setRequestMethod(RequestMethod method) {
     this->m_requestMethod = method;
 }
 
-HttpRequester::RequestMethod HttpRequester::requestMethod() {
+QHttpRequester::RequestMethod QHttpRequester::requestMethod() {
     return m_requestMethod;
 }
 
-void HttpRequester::setPostData(QByteArray postData) {
+void QHttpRequester::setPostData(QByteArray postData) {
     this->m_postData = postData;
 }
 
-QByteArray HttpRequester::postData() {
+QByteArray QHttpRequester::postData() {
     return m_postData;
 }
 
-void HttpRequester::setRawHeader(const QByteArray& headerName, const QByteArray& value) {
+void QHttpRequester::setRawHeader(const QByteArray& headerName, const QByteArray& value) {
     m_headers.insert(headerName, value);
 }
 
-QByteArray HttpRequester::rawHeader(const QByteArray& headerName) const {
+QByteArray QHttpRequester::rawHeader(const QByteArray& headerName) const {
     return m_headers.value(headerName);
 }
 
-void HttpRequester::setSslConfiguration(const QSslConfiguration& config) {
+void QHttpRequester::setSslConfiguration(const QSslConfiguration& config) {
     m_sslConfiguration = config;
 }
 
-QSslConfiguration HttpRequester::sslConfiguration() const {
+QSslConfiguration QHttpRequester::sslConfiguration() const {
     return m_sslConfiguration;
 }
 
-void HttpRequester::setTimeout(const int &timeout) {
+void QHttpRequester::setTimeout(const int &timeout) {
     m_timeout = timeout;
 }
 
-const int& HttpRequester::timeout() const {
+const int& QHttpRequester::timeout() const {
     return m_timeout;
 }
 
-void HttpRequester::printErr() {
+void QHttpRequester::printErr() {
     printf("ERROR (HttpRequester2): %s\n\tPath: %s\n",
            errorString().toLatin1().data(),
            m_requestUrl.toLatin1().data());
 }
 
-void HttpRequester::showAuthDialog() {
+void QHttpRequester::showAuthDialog() {
     if (!m_authDialogEnabled) {
         return;
     }
@@ -240,8 +240,8 @@ void HttpRequester::showAuthDialog() {
 #endif
 }
 
-QByteArray HttpRequester::downloadFile(QString url, QString user, QString pass, QString fileName, RequestMethod method, QByteArray postData, QMap<QByteArray, QByteArray> rawHeaders, QSslConfiguration config, bool cacheEnabled) {
-    HttpRequester httpRequester;
+QByteArray QHttpRequester::downloadFile(QString url, QString user, QString pass, QString fileName, RequestMethod method, QByteArray postData, QMap<QByteArray, QByteArray> rawHeaders, QSslConfiguration config, bool cacheEnabled) {
+    QHttpRequester httpRequester;
     if(url.contains('.')){
         httpRequester.setAuthentication(user, pass);
         httpRequester.setRequestMethod(method);
@@ -276,7 +276,7 @@ QByteArray HttpRequester::downloadFile(QString url, QString user, QString pass, 
     return httpRequester.response();
 }
 
-void HttpRequester::clearCacheStatic(){
-    HttpRequester httpRequester;
+void QHttpRequester::clearCacheStatic(){
+    QHttpRequester httpRequester;
     httpRequester.clearCache();
 }

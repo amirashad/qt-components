@@ -4,12 +4,13 @@
 #********************************************
 
 TEMPLATE = lib
-TARGET = libqcomps
+TARGET = QtComponents
 INCLUDEPATH += .
 
-QT = core gui widgets xml network
+QT = core gui widgets network
 
 DEFINES += QCOMPS_DLL
+DESTDIR = $$top_destdir
 
 TRANSLATIONS += qcomps_az.ts qcomps_ru.ts
 
