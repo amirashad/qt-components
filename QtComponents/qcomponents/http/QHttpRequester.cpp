@@ -24,7 +24,7 @@ QHttpRequester::QHttpRequester(QObject * parent) : QObject(parent) {
     m_reply = NULL;
     m_timeout = 60000; // timeout 60 sec.
     m_cacheEnabled = false;
-    m_diskCache.setCacheDirectory(QDir::tempPath() + "/saferegion/caches");
+    m_diskCache.setCacheDirectory(QDir::tempPath() + "/qhttpreq/caches");
 
     connect(&m_qnam, SIGNAL(authenticationRequired(QNetworkReply*, QAuthenticator*)),
             this, SLOT(slotAuthenticationRequired(QNetworkReply*, QAuthenticator*)));
