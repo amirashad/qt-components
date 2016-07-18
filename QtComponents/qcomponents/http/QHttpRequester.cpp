@@ -121,7 +121,7 @@ void QHttpRequester::sendRequest(QString url) {
         timer.stop();
         if (m_reply->error() > 0) {
             // error
-            printErr();
+//            printErr();
         } else {
             int v = m_reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
 
@@ -197,7 +197,8 @@ const int& QHttpRequester::timeout() const {
 }
 
 void QHttpRequester::printErr() {
-    printf("ERROR (HttpRequester2): %s\n\tPath: %s\n",
+    printf("ERROR (%s): %s\n\tPath: %s\n",
+           "QHttpRequester",
            errorString().toLatin1().data(),
            m_requestUrl.toLatin1().data());
 }
